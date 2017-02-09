@@ -123,7 +123,7 @@
 							<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
 							<%
 								}
-							
+							//hi
 							%>
 							
 					</div>
