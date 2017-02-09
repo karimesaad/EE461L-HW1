@@ -3,8 +3,7 @@
 <%@ page import="com.google.appengine.api.users.User"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
-<%@ page
-	import="com.google.appengine.api.datastore.DatastoreServiceFactory"%>
+<%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory"%>
 <%@ page import="com.google.appengine.api.datastore.DatastoreService"%>
 <%@ page import="com.google.appengine.api.datastore.Query"%>
 <%@ page import="com.google.appengine.api.datastore.Entity"%>
@@ -76,9 +75,29 @@
 					</form>
 					<!-- --------------------TK------------------------- -->
 
+					<!--  This form creates the Subscribe Button -->
+					<form action="/subscribe" method="post">
+						<div>
+							<input type="submit" value="Subscribe" />
+						</div>
+					</form>
+					<!-- ******************TK******************* -->
+
+
 					<%
 								} else {
+											
 							%>
+							
+							<!--This "form" creates the "See All Blogs Button" -->
+					<form action="/seeAll" method="post">
+						<div>
+							<input type="submit" value="See All Blogs" />
+						</div>
+					</form>
+					<!-- --------------------TK------------------------- -->
+
+							
 							<h2 class= "hello">
 								Hello! <a href="<%=userService.createLoginURL(request.getRequestURI())%>">Sign in</a> to include your name with greetings you post.
 							</h2>
@@ -130,6 +149,5 @@
 				</div>
 			</div>
 		</div>
-	
 	</body>
 </html>

@@ -3,8 +3,7 @@
 <%@ page import="com.google.appengine.api.users.User"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
-<%@ page
-	import="com.google.appengine.api.datastore.DatastoreServiceFactory"%>
+<%@ page import="com.google.appengine.api.datastore.DatastoreServiceFactory"%>
 <%@ page import="com.google.appengine.api.datastore.DatastoreService"%>
 <%@ page import="com.google.appengine.api.datastore.Query"%>
 <%@ page import="com.google.appengine.api.datastore.Entity"%>
@@ -20,10 +19,39 @@
     
 
 <html>
-<head>
+
+	<head>
+	
+		<title>Blog Entry Page</title>
+	
+		<!-- Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Raleway:500italic,600italic,600,700,700italic,300italic,300,400,400italic,800,900' rel='stylesheet' type='text/css'>
+	
+		<!-- CSS -->
+		<link rel="stylesheet" type="text/css" href="stylesheets/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+	
+	</head>
+	
+	<header class="header" id="HOME">
+	
+	  	<div class="header-overlay">
+			<div class="container header-containeru8">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="header-text">
+							<h1><strong> Create your Blog Entry! </strong></h1>
+							<h2> Write something on here that nobody will ever see. </h2>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</header>
+
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-</head>
+
 <body>
 		<div class= submit-post>
 			<div class=container>
