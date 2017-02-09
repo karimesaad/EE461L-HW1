@@ -47,8 +47,8 @@
 				</div>
 			</div>
 		</div>
-		
 	</header>
+	
 	
 	<body>
 	
@@ -67,8 +67,16 @@
 							Hello, ${fn:escapeXml(user.nickname)}! (You can <a href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign out</a>.)
 							<br></h2>
 							<h3>If you would like to add a post, click <a href="/blogpost.jsp">HERE!</a></h3>
-							
-						<%
+
+					<!--This "form" creates the "See All Blogs Button" -->
+					<form action="/seeAll" method="post">
+						<div>
+							<input type="submit" value="See All Blogs" />
+						</div>
+					</form>
+					<!-- --------------------TK------------------------- -->
+
+					<%
 								} else {
 							%>
 							<h2 class= "hello">
@@ -93,9 +101,11 @@
 
 							ObjectifyService.register(Greeting.class);
 							List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
-							Collections.sort(greetings);
+							List<Greeting> welcomeGreetings = greetings.subList(greetings.size()-4, greetings.size()-1);
+							//Collections.sort(greetings, new Greeting(user, "content"));
+							Collections.sort(welcomeGreetings);
 
-								for (Greeting greeting : greetings) {
+								for (Greeting greeting : welcomeGreetings) {
 										pageContext.setAttribute("greeting_content", greeting.getContent());
 										if (greeting.getUser() == null) {
 							%>

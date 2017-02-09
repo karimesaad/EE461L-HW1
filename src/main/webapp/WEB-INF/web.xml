@@ -5,6 +5,17 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
          version="2.5">
 
+<!-- This servlet is for the "see all blogs" button -->
+<servlet>
+	<servlet-name>seeAll</servlet-name>
+	<jsp-file>/seeAll.jsp</jsp-file>
+</servlet>
+<servlet-mapping>
+	<servlet-name>seeAll</servlet-name>
+	<url-pattern>/seeAll</url-pattern>
+</servlet-mapping>
+<!--  **********************TK******************** -->
+
   
   <servlet> 
 	<servlet-name>ofysign</servlet-name>
