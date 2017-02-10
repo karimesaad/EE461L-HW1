@@ -5,6 +5,19 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" 
          version="2.5">
 
+<!--          Cron job Servlet                  -->
+<servlet>
+<servlet-name>CronServlet</servlet-name>
+<servlet-class>guestbook.CronServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>CronServlet</servlet-name>
+<url-pattern>/cron</url-pattern>
+</servlet-mapping>
+<!--                   TK                -->
+
+
+
 <!-- This servlet is for the "see all blogs" button -->
 <servlet>
 	<servlet-name>seeAll</servlet-name>
@@ -16,6 +29,18 @@
 </servlet-mapping>
 <!--  **********************TK******************** -->
 
+<!--  This servlet is for the "Subscriber List"    -->
+<servlet> 
+	<servlet-name>SubList</servlet-name>
+	<servlet-class>guestbook.SubscriberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>SubList</servlet-name>
+	<url-pattern>/SubscriberServlet</url-pattern>
+  </servlet-mapping>
+
+
+<!--  -->
   
   <servlet> 
 	<servlet-name>ofysign</servlet-name>

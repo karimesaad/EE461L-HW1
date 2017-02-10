@@ -9,20 +9,38 @@ import com.googlecode.objectify.annotation.Id;
 public class Greeting implements Comparable<Greeting> {
     @Id Long id;
     User user;
+    String title;
     String content;
     Date date;
     private Greeting() {}
     public Greeting(User user, String content) {
-        this.user = user;
+    	this.user = user;
         this.content = content;
         date = new Date();
     }
+    
+    public Greeting(User user, String title, String content){
+    	this.user = user;
+    	this.title = title;
+    	this.content = content;
+    	date = new Date();
+    }
+    
     public User getUser() {
         return user;
     }
     public String getContent() {
         return content;
     }
+    
+    public String getTitle(){
+    	return title;
+    }
+    
+    public Date getDate(){
+    	return date;
+    }
+    
     @Override
     public int compareTo(Greeting other) {
         if (date.after(other.date)) {

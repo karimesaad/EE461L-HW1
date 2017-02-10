@@ -17,6 +17,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="guestbook.Greeting"%>
     
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <html>
 
@@ -49,8 +50,7 @@
 		</div>
 	</header>
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<!--  <title>Insert title here</title>  -->
 
 <body>
 		<div class= submit-post>
@@ -60,7 +60,9 @@
 					
 						<form action="/ofysign" method="post">
 							<div>
-								<textarea name="content" rows="3" cols="60"></textarea>
+								<p></p>
+								<p> Title:   <textarea name="title" rows="2" cols="60"></textarea> </p>
+								<p> Content: <textarea name="content" rows="3" cols="60"></textarea> </p>
 							</div>
 							<div>
 								<input type="submit" value="Post Greeting" />

@@ -63,6 +63,16 @@ public class OfySignGuestbookServlet extends HttpServlet {
     		greeting = new Greeting (user, content);
     	}
     	
+    	
+    	// ----------------- This is for getting the title -----------------------//
+    	String title = req.getParameter("title");
+    	if(user != null){
+    		greeting = new Greeting(user, title, content);
+    	} else {
+    		greeting = new Greeting (user, title, content);
+    	}
+    	// -----------------------------TK --------------------------------------//
+    	
     	//Use Objectify to save the greeting and now() is used to make the call synchronously as we 
     	//will immediately get a new page using redirect and we want the data to be present 
     	ObjectifyService.ofy().save().entity(greeting).now();
