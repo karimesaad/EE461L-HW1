@@ -60,7 +60,7 @@ public class CronServlet extends HttpServlet {
 			  for (Greeting a : greetings){
 				  if (a.getDate().after(yesterday) ){
 					  str = str + a.getTitle() + "\n" + a.getDate().toString() + "\n" + a.getContent() + "\n" + "by: " + a.getUser() + "\n" +
-							  "______________________________________________________________________________________";   
+							  "______________________________________________________________________________________" + "\n";   
 				  }
 			  }
 			  

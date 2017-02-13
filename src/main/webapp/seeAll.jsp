@@ -51,32 +51,41 @@
 	
 	<body>
 	
-						   <%
+<%
 							ObjectifyService.register(Greeting.class);
 							List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
 							//List<Greeting> welcomeGreetings = greetings.subList(greetings.size()-4, greetings.size()-1);
 							Collections.sort(greetings);
 							//Collections.sort(welcomeGreetings);
 
-								for (Greeting greeting : greetings) {
-										pageContext.setAttribute("greeting_content", greeting.getContent());
-										if (greeting.getUser() == null) {
-							%>
-							<p>An anonymous person wrote:</p>
-							<%
-								} else {
-											pageContext.setAttribute("greeting_user", greeting.getUser());
-							%>
-							<p>
-								<b>${fn:escapeXml(greeting_user.nickname)}</b> wrote:
-							</p>
-							<%
-								}
-							%>
+// 								for (Greeting greeting : greetings) {
+// 										pageContext.setAttribute("greeting_content", greeting.getContent());
+// 										if (greeting.getUser() == null) {
+											
+		for (Greeting greeting : greetings) {
+			pageContext.setAttribute("greeting_content", greeting.getContent());
+			pageContext.setAttribute("greeting_user", greeting.getUser());
+			pageContext.setAttribute("greeting_title", greeting.getTitle());
+			pageContext.setAttribute("greeting_date", greeting.getDate());
+								
+%>
+					<p>
+						${fn:escapeXml(greeting_user.nickname)} wrote:				
+					</p>
+					
+					<p>
+						<strong>${fn:escapeXml(greeting_title)}</strong>
+					</p>
+
+						<p>
 							<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
-							<%
-								}
-							//hi
-							%>
+						</p>
+						
+					<p>
+						<em>${fn:escapeXml(greeting_date)}</em>
+					</p>
+<% 
+		}
+%>
 	</body>
 </html>

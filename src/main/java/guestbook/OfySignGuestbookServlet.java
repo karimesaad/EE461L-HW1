@@ -56,6 +56,7 @@ public class OfySignGuestbookServlet extends HttpServlet {
     	UserService userService = UserServiceFactory.getUserService();
     	User user = userService.getCurrentUser(); //who is the user
     	
+    	
     	String content = req.getParameter("content");
     	if(user != null){
     		greeting = new Greeting(user, content);
