@@ -62,7 +62,7 @@
 	<div class=usersignin>
 		<div class=container>
 			<div class=row>
-				<div class="col-md-4 col-md-offset-3">
+				<div class="col-md-12">
 
 					<% 
 							UserService userService = UserServiceFactory.getUserService();
@@ -70,22 +70,15 @@
 							if (user != null) {
 								pageContext.setAttribute("user", user);
 						%>
-					<h2>
+					<h4>
 						Hello, ${fn:escapeXml(user.nickname)}! (You can <a
 							href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign
 							out</a>.) <br>
-					</h2>
+					</h4>
 					<h3>
 						If you would like to add a post, click <a href="/blogpost.jsp">HERE!</a>
 					</h3>
 
-					<!--This "form" creates the "See All Blogs Button" -->
-					<form action="/seeAll" method="post">
-						<div>
-							<input type="submit" value="See All Blogs" />
-						</div>
-					</form>
-					<!-- --------------------TK------------------------- -->
 <%			
 					ObjectifyService.register(Subscriber.class);
 					List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();
@@ -126,20 +119,11 @@
 											
 							%>
 
-					<!--This "form" creates the "See All Blogs Button" -->
-					<form action="/seeAll" method="post">
-						<div>
-							<input type="submit" value="See All Blogs" />
-						</div>
-					</form>
-					<!-- --------------------TK------------------------- -->
-
-
-					<h2 class="hello">
+					<h4 class="hello">
 						Hello! <a
 							href="<%=userService.createLoginURL(request.getRequestURI())%>">Sign
 							in</a> to include your name with greetings you post.
-					</h2>
+					</h4>
 					<br>
 					<br>
 					<%
@@ -171,27 +155,46 @@
 			pageContext.setAttribute("greeting_date", greeting.getDate());
 								
 %>
-					<p>
+				<div class=posts >
+					
+					<p class= nickname>
 						${fn:escapeXml(greeting_user.nickname)} wrote:				
 					</p>
 					
-					<p>
-						<strong>${fn:escapeXml(greeting_title)}</strong>
-					</p>
-
-						<p>
-							<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
-						</p>
-						
-					<p>
+					<p class= date>
 						<em>${fn:escapeXml(greeting_date)}</em>
 					</p>
-<%
+					
+					<p class=title>
+						<strong>${fn:escapeXml(greeting_title)}</strong>
+					</p>
+					
+					<p class=content>
+						<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
+					</p>
+					<br><br>
+
+					
+				</div>
+<%					
 		}	
 %>		
 				</div>
+				
+				<div class="col-md-4 col-md-offset-5">
+					
+					<!--This "form" creates the "See All Blogs Button" -->
+					<form action="/seeAll" method="post">
+						<div>
+							<input class= button type="submit" value="See All Blogs" />
+						</div>
+					</form>
+					<!-- --------------------TK------------------------- -->
+				</div>	
+				
 			</div>
 		</div>
 	</div>
+	
 </body>
 </html>

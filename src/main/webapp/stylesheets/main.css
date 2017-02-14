@@ -5,8 +5,6 @@ body {
    overflow-x: hidden;
 }
 
-
-
 .header{
 	padding-top: 70px;
 	padding-bottom: 140px;
@@ -17,9 +15,10 @@ body {
     background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    -webkit-background-size: cover;
-    
+    -webkit-background-size: cover;    
 }
+
+
 
 .header h2 {
 	color: white;
@@ -47,4 +46,72 @@ h3 {
 	font-size:15px;
 	color: black;
 }
+
+h4 {
+	font-size: 30px;
 }
+
+/*======= Button ====== */
+
+.button {
+  border-radius: 4px;
+  background-color: #2da5e6;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+/*======= Posts ======*/
+
+.nickname {
+	font-size: 22px;
+	padding-bottom: 3px;
+}
+
+.date {
+	font-size: 15px;
+	padding-bottom: 3px;
+}
+
+.title {
+	font-size: 20px;
+	padding-bottom: 6px;
+}
+
+
+
+
+
+
