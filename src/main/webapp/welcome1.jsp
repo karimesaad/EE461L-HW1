@@ -155,6 +155,7 @@
 			pageContext.setAttribute("greeting_date", welcomeGreetings.get(i).getDate());
 								
 %>
+<!-- test -->
 				<div class=posts >
 					
 					<p class= nickname>
