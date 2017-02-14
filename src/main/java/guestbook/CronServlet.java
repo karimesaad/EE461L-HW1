@@ -64,15 +64,16 @@ public class CronServlet extends HttpServlet {
 					}
 				}
 
-				msg.setText(str);
-
+				//msg.setText(str);
+				msg.setText("hi");
 				for (Subscriber b : subscribers) {
 
 					msg.addRecipient(Message.RecipientType.TO,
-							new InternetAddress(b.getUser().getEmail(), b.getUser().getNickname()));
+							//new InternetAddress(b.getUser().getEmail(), b.getUser().getNickname()));
+							new InternetAddress("karimesm94@gmail.com", "Karime"));
 					Transport.send(msg);
-
 				}
+		
 
 			} catch (AddressException e) {
 				// ...
@@ -81,10 +82,11 @@ public class CronServlet extends HttpServlet {
 			} catch (UnsupportedEncodingException e) {
 				// ...
 			}
-			// Put your logic here
-			// BEGIN
-			// END
+//			// Put your logic here
+//			// BEGIN
+//			// END
 		} catch (Exception ex) {
+			_logger.info("we have an error, its karime's fault");
 			// Log any exceptions in your Cron Job
 		}
 	}

@@ -7,7 +7,7 @@
 				subscribed users. If there are no new posts, no email should be sent.
 	</description>
 	<!-- This is the test schedule -->
-		<schedule>every 1 minute</schedule>
+		<schedule>every 10 minutes</schedule>
 	
 	<!-- This is the acutal schedule
 	  <schedule>every day 17:00</schedule>
