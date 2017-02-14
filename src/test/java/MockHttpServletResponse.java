@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * This class is created only for the purpose of demonstrating unit testing of the
- * {@link HelloAppEngine} class. Only those methods have meaningful implementation
- * which are used in the unit test.
+ * This class is created only for the purpose of demonstrating unit testing of
+ * the {@link HelloAppEngine} class. Only those methods have meaningful
+ * implementation which are used in the unit test.
  * 
  * Feel free to change this class or replace it using other ways for testing
  * {@link HttpServlet}s, e.g. Spring MVC Test or Mockito to suit your needs.
@@ -19,155 +19,155 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class MockHttpServletResponse implements HttpServletResponse {
 
-  private String contentType;
-  private StringWriter writerContent = new StringWriter();
-  private PrintWriter writer = new PrintWriter(writerContent);
+	private String contentType;
+	private StringWriter writerContent = new StringWriter();
+	private PrintWriter writer = new PrintWriter(writerContent);
 
-  @Override
-  public void setContentType(String contentType) {
-    this.contentType = contentType;
-  }
+	@Override
+	public void setContentType(String contentType) {
+		this.contentType = contentType;
+	}
 
-  @Override
-  public String getContentType() {
-    return contentType;
-  }
+	@Override
+	public String getContentType() {
+		return contentType;
+	}
 
-  @Override
-  public PrintWriter getWriter() throws IOException {
-    return writer;
-  }
+	@Override
+	public PrintWriter getWriter() throws IOException {
+		return writer;
+	}
 
-  public StringWriter getWriterContent() {
-    return writerContent;
-  }
-  
-  // anything below is the default generated implementation
-  
-  @Override
-  public void flushBuffer() throws IOException {
-  }
+	public StringWriter getWriterContent() {
+		return writerContent;
+	}
 
-  @Override
-  public int getBufferSize() {
-    return 0;
-  }
+	// anything below is the default generated implementation
 
-  @Override
-  public String getCharacterEncoding() {
-    return null;
-  }
+	@Override
+	public void flushBuffer() throws IOException {
+	}
 
-  @Override
-  public Locale getLocale() {
-    return null;
-  }
+	@Override
+	public int getBufferSize() {
+		return 0;
+	}
 
-  @Override
-  public ServletOutputStream getOutputStream() throws IOException {
-    return null;
-  }
+	@Override
+	public String getCharacterEncoding() {
+		return null;
+	}
 
-  @Override
-  public boolean isCommitted() {
-    return false;
-  }
+	@Override
+	public Locale getLocale() {
+		return null;
+	}
 
-  @Override
-  public void reset() {
-  }
+	@Override
+	public ServletOutputStream getOutputStream() throws IOException {
+		return null;
+	}
 
-  @Override
-  public void resetBuffer() {
-  }
+	@Override
+	public boolean isCommitted() {
+		return false;
+	}
 
-  @Override
-  public void setBufferSize(int arg0) {
-  }
+	@Override
+	public void reset() {
+	}
 
-  @Override
-  public void setCharacterEncoding(String arg0) {
-  }
+	@Override
+	public void resetBuffer() {
+	}
 
-  @Override
-  public void setContentLength(int arg0) {
-  }
+	@Override
+	public void setBufferSize(int arg0) {
+	}
 
-  @Override
-  public void setLocale(Locale arg0) {
-  }
+	@Override
+	public void setCharacterEncoding(String arg0) {
+	}
 
-  @Override
-  public void addCookie(Cookie arg0) {
-  }
+	@Override
+	public void setContentLength(int arg0) {
+	}
 
-  @Override
-  public void addDateHeader(String arg0, long arg1) {
-  }
+	@Override
+	public void setLocale(Locale arg0) {
+	}
 
-  @Override
-  public void addHeader(String arg0, String arg1) {
-  }
+	@Override
+	public void addCookie(Cookie arg0) {
+	}
 
-  @Override
-  public void addIntHeader(String arg0, int arg1) {
-  }
+	@Override
+	public void addDateHeader(String arg0, long arg1) {
+	}
 
-  @Override
-  public boolean containsHeader(String arg0) {
-    return false;
-  }
+	@Override
+	public void addHeader(String arg0, String arg1) {
+	}
 
-  @Override
-  public String encodeRedirectURL(String arg0) {
-    return null;
-  }
+	@Override
+	public void addIntHeader(String arg0, int arg1) {
+	}
 
-  @Override
-  public String encodeRedirectUrl(String arg0) {
-    return null;
-  }
+	@Override
+	public boolean containsHeader(String arg0) {
+		return false;
+	}
 
-  @Override
-  public String encodeURL(String arg0) {
-    return null;
-  }
+	@Override
+	public String encodeRedirectURL(String arg0) {
+		return null;
+	}
 
-  @Override
-  public String encodeUrl(String arg0) {
-    return null;
-  }
+	@Override
+	public String encodeRedirectUrl(String arg0) {
+		return null;
+	}
 
-  @Override
-  public void sendError(int arg0) throws IOException {
-  }
+	@Override
+	public String encodeURL(String arg0) {
+		return null;
+	}
 
-  @Override
-  public void sendError(int arg0, String arg1) throws IOException {
-  }
+	@Override
+	public String encodeUrl(String arg0) {
+		return null;
+	}
 
-  @Override
-  public void sendRedirect(String arg0) throws IOException {
-  }
+	@Override
+	public void sendError(int arg0) throws IOException {
+	}
 
-  @Override
-  public void setDateHeader(String arg0, long arg1) {
-  }
+	@Override
+	public void sendError(int arg0, String arg1) throws IOException {
+	}
 
-  @Override
-  public void setHeader(String arg0, String arg1) {
-  }
+	@Override
+	public void sendRedirect(String arg0) throws IOException {
+	}
 
-  @Override
-  public void setIntHeader(String arg0, int arg1) {
-  }
+	@Override
+	public void setDateHeader(String arg0, long arg1) {
+	}
 
-  @Override
-  public void setStatus(int arg0) {
-  }
+	@Override
+	public void setHeader(String arg0, String arg1) {
+	}
 
-  @Override
-  public void setStatus(int arg0, String arg1) {
-  }
+	@Override
+	public void setIntHeader(String arg0, int arg1) {
+	}
+
+	@Override
+	public void setStatus(int arg0) {
+	}
+
+	@Override
+	public void setStatus(int arg0, String arg1) {
+	}
 
 }

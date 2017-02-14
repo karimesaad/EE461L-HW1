@@ -9,7 +9,7 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;*/
 import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory; 
+import com.google.appengine.api.users.UserServiceFactory;
 import java.io.IOException;
 import java.util.Date;
 import javax.servlet.http.HttpServlet;
@@ -18,68 +18,65 @@ import javax.servlet.http.HttpServletResponse;
 import com.googlecode.objectify.ObjectifyService;
 import static com.googlecode.objectify.ObjectifyService.ofy;
 
-
- 
 public class OfySignGuestbookServlet extends HttpServlet {
 
 	static {
-        ObjectifyService.register(Greeting.class);
-    }
-	
-	
-    public void doPost(HttpServletRequest req, HttpServletResponse resp)
-                throws IOException {
-       // UserService userService = UserServiceFactory.getUserService();
-        //User user = userService.getCurrentUser();
- 
-        // We have one entity group per Guestbook with all Greetings residing
-        // in the same entity group as the Guestbook to which they belong.
-        // This lets us run a transactional ancestor query to retrieve all
-        // Greetings for a given Guestbook.  However, the write rate to each
-        // Guestbook should be limited to ~1/second.
-        //String guestbookName = req.getParameter("guestbookName");
-        //Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
-        //String content = req.getParameter("content");
-        //Date date = new Date();
-        //Entity greeting = new Entity("Greeting", guestbookKey);
-        //greeting.setProperty("user", user);
-        //greeting.setProperty("date", date);
-        //greeting.setProperty("content", content);
- 
-        //DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-        //datastore.put(greeting);
-        //resp.sendRedirect("/guestbook.jsp?guestbookName=" + guestbookName);
+		ObjectifyService.register(Greeting.class);
+	}
 
-    	
-    	
-    	Greeting greeting;
-    	UserService userService = UserServiceFactory.getUserService();
-    	User user = userService.getCurrentUser(); //who is the user
-    	
-    	
-    	String content = req.getParameter("content");
-    	if(user != null){
-    		greeting = new Greeting(user, content);
-    	} else {
-    		greeting = new Greeting (user, content);
-    	}
-    	
-    	
-    	// ----------------- This is for getting the title -----------------------//
-    	String title = req.getParameter("title");
-    	if(user != null){
-    		greeting = new Greeting(user, title, content);
-    	} else {
-    		greeting = new Greeting (user, title, content);
-    	}
-    	// -----------------------------TK --------------------------------------//
-    	
-    	//Use Objectify to save the greeting and now() is used to make the call synchronously as we 
-    	//will immediately get a new page using redirect and we want the data to be present 
-    	ObjectifyService.ofy().save().entity(greeting).now();
-    	
-    	resp.sendRedirect("/welcome1.jsp");
-    	
-    	}
-    	
-    }
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		// UserService userService = UserServiceFactory.getUserService();
+		// User user = userService.getCurrentUser();
+
+		// We have one entity group per Guestbook with all Greetings residing
+		// in the same entity group as the Guestbook to which they belong.
+		// This lets us run a transactional ancestor query to retrieve all
+		// Greetings for a given Guestbook. However, the write rate to each
+		// Guestbook should be limited to ~1/second.
+		// String guestbookName = req.getParameter("guestbookName");
+		// Key guestbookKey = KeyFactory.createKey("Guestbook", guestbookName);
+		// String content = req.getParameter("content");
+		// Date date = new Date();
+		// Entity greeting = new Entity("Greeting", guestbookKey);
+		// greeting.setProperty("user", user);
+		// greeting.setProperty("date", date);
+		// greeting.setProperty("content", content);
+
+		// DatastoreService datastore =
+		// DatastoreServiceFactory.getDatastoreService();
+		// datastore.put(greeting);
+		// resp.sendRedirect("/guestbook.jsp?guestbookName=" + guestbookName);
+
+		Greeting greeting;
+		UserService userService = UserServiceFactory.getUserService();
+		User user = userService.getCurrentUser(); // who is the user
+
+		String content = req.getParameter("content");
+		if (user != null) {
+			greeting = new Greeting(user, content);
+		} else {
+			greeting = new Greeting(user, content);
+		}
+
+		// ----------------- This is for getting the title
+		// -----------------------//
+		String title = req.getParameter("title");
+		if (user != null) {
+			greeting = new Greeting(user, title, content);
+		} else {
+			greeting = new Greeting(user, title, content);
+		}
+		// -----------------------------TK
+		// --------------------------------------//
+
+		// Use Objectify to save the greeting and now() is used to make the call
+		// synchronously as we
+		// will immediately get a new page using redirect and we want the data
+		// to be present
+		ObjectifyService.ofy().save().entity(greeting).now();
+
+		resp.sendRedirect("/welcome1.jsp");
+
+	}
+
+}
