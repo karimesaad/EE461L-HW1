@@ -144,15 +144,15 @@
 		ObjectifyService.register(Greeting.class);
 		List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
 		Collections.sort(greetings);
-		List<Greeting> welcomeGreetings = greetings.subList(0, 4);
+		List<Greeting> welcomeGreetings = greetings;//.subList(0, 4);
 		//Collections.sort(greetings, new Greeting(user, "content"));
 		Collections.sort(welcomeGreetings);
 
-		for (Greeting greeting : welcomeGreetings) {
-			pageContext.setAttribute("greeting_content", greeting.getContent());
-			pageContext.setAttribute("greeting_user", greeting.getUser());
-			pageContext.setAttribute("greeting_title", greeting.getTitle());
-			pageContext.setAttribute("greeting_date", greeting.getDate());
+		for (int i = 0; i < 4 && i<welcomeGreetings.size(); i++) {
+			pageContext.setAttribute("greeting_content", welcomeGreetings.get(i).getContent());
+			pageContext.setAttribute("greeting_user", welcomeGreetings.get(i).getUser());
+			pageContext.setAttribute("greeting_title", welcomeGreetings.get(i).getTitle());
+			pageContext.setAttribute("greeting_date", welcomeGreetings.get(i).getDate());
 								
 %>
 				<div class=posts >
