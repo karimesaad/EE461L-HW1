@@ -62,7 +62,7 @@
 	<div class=usersignin>
 		<div class=container>
 			<div class=row>
-				<div class="col-md-12">
+				<div class="col-md-9">
 
 					<% 
 							UserService userService = UserServiceFactory.getUserService();
@@ -70,8 +70,8 @@
 							if (user != null) {
 								pageContext.setAttribute("user", user);
 						%>
-					<h4>
-						Hello, ${fn:escapeXml(user.nickname)}! (You can <a
+					<h4><br>
+						Hello,<b> ${fn:escapeXml(user.nickname)}!</b> (You can <a
 							href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign
 							out</a>.) <br>
 					</h4>
@@ -93,26 +93,31 @@
 						if (emails.contains(user.getEmail())){
 %>							
 							<!--  This form creates the unSubscribe Button -->
-				<div class="col-md-4 col-md-offset-5">
+			<!--  	<div class="col-md-4 col-md-offset-5"> -->
+			<br>
 					<form action="/SubscriberServlet" method="post">
-						<div>
-							<input class = button name="Sub" type="submit" value="Unsubscribe" />
-						</div>
+						<!--  <div>-->
+							<input class = subscribe-button name="Sub" type="submit" value="Unsubscribe" />
+						<!--  </div>-->
 					</form>
-				</div>
+					<br><br>
+			<!-- 	</div> -->
 
 						
 <%
 						} else {
 %>								
 
-				<div class="col-md-4 col-md-offset-5">
+			<!--	<div class="col-md-4 col-md-offset-5">-->
+			<br>
 					<form action="/SubscriberServlet" method="post">
-						<div>
-								<input class = button name="Sub" type="submit" value="Subscribe" />
-						</div>
+						<!--  <div>-->
+								<input class = subscribe-button name="Sub" type="submit" value="Subscribe" />
+						<!--  </div>-->
 					</form>
-				</div>
+					<br>
+					<br>
+			<!--	</div> -->
 
 
 
@@ -163,7 +168,7 @@
 				<div class=llama >
 					
 					<p class= nickname>
-						${fn:escapeXml(greeting_user.nickname)} wrote:				
+						<b>${fn:escapeXml(greeting_user.nickname)}</b> wrote:				
 					</p>
 					
 					<p class= date>
