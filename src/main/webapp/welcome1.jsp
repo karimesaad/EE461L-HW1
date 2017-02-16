@@ -93,22 +93,26 @@
 						if (emails.contains(user.getEmail())){
 %>							
 							<!--  This form creates the unSubscribe Button -->
+				<div class="col-md-4 col-md-offset-5">
 					<form action="/SubscriberServlet" method="post">
 						<div>
-							<input name="Sub" type="submit" value="Unsubscribe" />
+							<input class = button name="Sub" type="submit" value="Unsubscribe" />
 						</div>
 					</form>
+				</div>
 					<!-- ******************TK******************* -->
 						
 <%
 						} else {
 %>								
 					<!--  This form creates the Subscribe Button -->
+				<div class="col-md-4 col-md-offset-5">
 					<form action="/SubscriberServlet" method="post">
 						<div>
-							<input name="Sub" type="submit" value="Subscribe" />
+								<input class = button name="Sub" type="submit" value="Subscribe" />
 						</div>
 					</form>
+				</div>
 					<!-- ******************TK******************* -->
 
 
@@ -156,7 +160,7 @@
 								
 %>
 <!-- test 1-->
-				<div class=posts >
+				<div class=llama >
 					
 					<p class= nickname>
 						${fn:escapeXml(greeting_user.nickname)} wrote:				
