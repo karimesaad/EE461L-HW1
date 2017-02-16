@@ -75,6 +75,13 @@
 							href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign
 							out</a>.) <br>
 					</h4>
+					
+					<form action="/seeAll" method="post">
+						<div>
+							<input class= button type="submit" value="See All Blogs" />
+						</div>
+					</form>
+					
 					<h3>
 						If you would like to add a post, click <a href="/blogpost.jsp">HERE!</a>
 					</h3>
@@ -100,12 +107,12 @@
 						</div>
 					</form>
 				</div>
-					<!-- ******************TK******************* -->
+
 						
 <%
 						} else {
 %>								
-					<!--  This form creates the Subscribe Button -->
+
 				<div class="col-md-4 col-md-offset-5">
 					<form action="/SubscriberServlet" method="post">
 						<div>
@@ -113,7 +120,7 @@
 						</div>
 					</form>
 				</div>
-					<!-- ******************TK******************* -->
+
 
 
 					<%
@@ -195,7 +202,7 @@
 							<input class= button type="submit" value="See All Blogs" />
 						</div>
 					</form>
-					<!-- --------------------TK------------------------- -->
+
 				</div>	
 				<%} %>
 				
