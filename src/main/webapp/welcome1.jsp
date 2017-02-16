@@ -181,7 +181,8 @@
 		}	
 %>		
 				</div>
-				
+				<% if (!greetings.isEmpty()) { 
+				%>
 				<div class="col-md-4 col-md-offset-5">
 					
 					<!--This "form" creates the "See All Blogs Button" -->
@@ -192,6 +193,7 @@
 					</form>
 					<!-- --------------------TK------------------------- -->
 				</div>	
+				<%} %>
 				
 			</div>
 		</div>
