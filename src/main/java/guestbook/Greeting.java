@@ -1,5 +1,8 @@
 package guestbook;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import com.google.appengine.api.users.User;
@@ -13,22 +16,36 @@ public class Greeting implements Comparable<Greeting> {
 	User user;
 	String title;
 	String content;
+	Calendar cal;
 	Date date;
 
+	public static Calendar toCalendar(Date date){ 
+		  Calendar cal = Calendar.getInstance();
+		  cal.setTime(date);
+		  return cal;
+		}
+	
+	
+	
 	private Greeting() {
 	}
 
 	public Greeting(User user, String content) {
 		this.user = user;
 		this.content = content;
-		date = new Date();
+		//date = new Date();
+		toCalendar(date = new Date());
+		cal = Calendar.getInstance();
+		
 	}
 
 	public Greeting(User user, String title, String content) {
 		this.user = user;
 		this.title = title;
 		this.content = content;
-		date = new Date();
+		//date = new Date();
+		toCalendar(date = new Date());
+		cal = Calendar.getInstance();
 	}
 
 	public User getUser() {
@@ -43,8 +60,11 @@ public class Greeting implements Comparable<Greeting> {
 		return title;
 	}
 
-	public Date getDate() {
-		return date;
+	public Calendar getDate() {
+		//return date;
+		toCalendar(date = new Date());
+		cal = Calendar.getInstance();
+		return cal;
 	}
 
 	@Override

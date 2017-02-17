@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Collections;
 import java.util.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -461,10 +463,10 @@ public class CronServlet extends HttpServlet {
 		
 		Sendgrid mail = new Sendgrid("TKnologic","khandpur104");
 		
-		
+		/*
 		ObjectifyService.register(Subscriber.class);
 		ObjectifyService.register(Greeting.class);
-		
+		*/
 		
 		ObjectifyService.register(Subscriber.class);
 		List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();
@@ -474,6 +476,8 @@ public class CronServlet extends HttpServlet {
 		List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
 		Collections.sort(greetings);
 		
+		List<Greeting> cronGreetings = new ArrayList<Greeting>();
+		
 		
 		// set credentials
 
@@ -481,17 +485,29 @@ public class CronServlet extends HttpServlet {
 		
 		// send your message.
 		String str = new String();
+		
 		//Date yesterday = new Date();
 		//yesterday.setHours(-24);
-		Date yesterday = new Date(System.currentTimeMillis() - (24*60*1000));
+		Date yesterday = new Date(System.currentTimeMillis() - (24 * 60 * 60 * 1000));
+		
+		/*
+		 * str += "Title: " + a.getTitle() + "\n\n" + a.getDate().toString() + "\n\n" + a.getContent() + "\n\n" + "by: "
+				+ a.getUser() + "\n\n" + "-----" + "\n\n";
+		 */
 		
 		for (Greeting a : greetings) {
-			if (a.getDate().after(yesterday)) {
-				str = str + "Title: " + a.getTitle() + "\r\n" + a.getDate().toString() + "\r\n" + a.getContent() + "\r\n" + "by: "
-				+ a.getUser() + "\r\n"
-				+ "--"
-				+ "\r\n";
+			if (a.date.after(yesterday)) {
+				cronGreetings.add(a);
 			}
+		}
+		
+		if (cronGreetings.isEmpty()){
+			return;
+		}
+		
+		for (Greeting email : cronGreetings){
+			str += "Title:         " + email.getTitle() + "\n\n" + "Date:          " + email.getDate().getTime().toString() + "\n\n" + "Content:       " + email.getContent() + "\n\n" + "by:            "
+					+ email.getUser() + "-----" + "\n\n\n";
 		}
 		
 		
@@ -503,7 +519,7 @@ public class CronServlet extends HttpServlet {
 		
 		
 	for (Subscriber b : subscribers) {
-		mail.setTo(b.getUser().getEmail()).setFrom("tarang.khandpur@utexas.edu").setSubject("461L_HW1_Cron: Here's what has happened on the Blog Yesterday Since 5:00pm").setText(str);
+		mail.setTo(b.getUser().getEmail()).setFrom("tarang.khandpur@utexas.edu").setSubject("461L_HW1_Cron: Here's what has happened on the Blog").setText(str);
 		try {
 			mail.send();
 		} catch (JSONException e) {
