@@ -463,7 +463,7 @@ public class CronServlet extends HttpServlet {
 		// set credentials
 
 		// set email data
-		mail.setTo("karimesm94@gmail.com").setFrom("tarang.khandpur@gmail.com").setSubject("Subject goes here").setText("Hello World!").setHtml("<strong>Hello World!</strong>");
+		//mail.setTo("karimesm94@gmail.com").setFrom("tarang.khandpur@gmail.com").setSubject("Subject goes here").setText("Hello World!").setHtml("<strong>Hello World!</strong>");
 
 		// send your message.
 		try {
