@@ -159,11 +159,11 @@ import sendGridGoogle.Sendgrid;
 ////set credentials
 //Sendgrid mail = new Sendgrid("","");
 ////set email data
-//mail.setTo(“foo@bar.com”)
-//.setFrom(“me@bar.com”)
-//.setSubject(“Subject goes here”)
-//.setText(“Hello World!”)
-//.setHtml(“Hello World!”);
+//mail.setTo(ï¿½foo@bar.comï¿½)
+//.setFrom(ï¿½me@bar.comï¿½)
+//.setSubject(ï¿½Subject goes hereï¿½)
+//.setText(ï¿½Hello World!ï¿½)
+//.setHtml(ï¿½Hello World!ï¿½);
 ////send your message
 //mail.send();
 //

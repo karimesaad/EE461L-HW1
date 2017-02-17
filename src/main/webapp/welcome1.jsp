@@ -70,17 +70,25 @@
 							if (user != null) {
 								pageContext.setAttribute("user", user);
 						%>
-					<h4><br><center>
-						Hello,<b> ${fn:escapeXml(user.nickname)}!</b></h4></center><center><h2>(You can <a
-							href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign
-							out</a>.) <br></center>
-					</h2> 
-
-					<div class="btn-group" role="group" aria-label="Basic example">
-					<form action="/SubscriberServlet" method="post">
-						<a href="/blogpost.jsp" class="btn btn-info" role="button">Add Post</a>
+					<h4>
+						<br>
+						<center>
+							Hello,<b> ${fn:escapeXml(user.nickname)}!</b>
+					</center></h4>
 					
-<%			
+					
+						<h2 class="title-align" align="center">
+							(You can <a
+								href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign
+								out</a>.)
+						</h2>
+ 						<br>
+					<div class="buttons" align="center">
+						<form action="/SubscriberServlet" method="post">
+							<a href="/blogpost.jsp" class="btn btn-info" id="button-addpost" role="button">Add
+								Post</a>
+
+							<%			
 					ObjectifyService.register(Subscriber.class);
 					List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();
 					Collections.sort(subscribers);			
@@ -91,54 +99,44 @@
 					}
 					
 						if (emails.contains(user.getEmail())){
-%>							
+%>
 							<!--  This form creates the unSubscribe Button -->
-			<!--  	<div class="col-md-4 col-md-offset-5"> -->
-			<br>
-						<form action="/SubscriberServlet" method="post">
-						<!--  <div>-->
-							<input class = "btn btn-info" name="Sub" type="submit" value="Unsubscribe" />
-						<!--  </div>-->
-					  	</form>
-					<br><br>
-			<!-- 	</div> -->
 
-						
-<%
+							<br>
+						<!--  	<form action="/SubscriberServlet" method="post">-->
+								<input class="btn btn-info" id="button-subscribe" name="Sub" type="submit"
+									value="Unsubscribe" />
+						<!--  	</form> -->
+							<br>
+							<br>
+
+							<%
 						} else {
-%>								
+%>
 
-			<!--	<div class="col-md-4 col-md-offset-5">-->
-			<br>
-			  		<form action="/SubscriberServlet" method="post">
-						<!--  <div>-->
-								<input class = "btn btn-info" name="Sub" type="submit" value="Subscribe" />
-						<!--  </div>-->
-			 	</form> 
-					<br>
-					<br>
-			<!--	</div> -->
-
-						</form>
-
-					<%
+							<br>
+						<!-- 	<form action="/SubscriberServlet" method="post"> -->
+								<input class="btn btn-info" id="button-unsubscribe" name="Sub" type="submit"
+									value="Subscribe" />
+						<!--  	</form> -->
+							<br> <br>
+							<%
 						}
-						
 							} else {
 											
 							%>
 
-					<h4 class="hello">
-						Hello! <a
-							href="<%=userService.createLoginURL(request.getRequestURI())%>">Sign
-							in</a> to include your name with greetings you post.
-					</h4>
-					<br>
-					<br>
-					<%
+							<h4 class="title-line" align="center">
+							<br>
+								Hello!<br></h4> <h2><center><a
+									href="<%=userService.createLoginURL(request.getRequestURI())%>">Sign
+									in</a> to include your name with greetings you post.
+							</center></h2>
+							<br> <br>
+							<%
 							}
 						%>
-
+						
 					</div>
 				</div>
 			</div>
@@ -150,7 +148,7 @@
 			<div class=row>
 				<div class="col-md-6 col-md-offset-3">
 
-<%
+					<%
 		ObjectifyService.register(Greeting.class);
 		List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
 		Collections.sort(greetings);
@@ -165,63 +163,71 @@
 			pageContext.setAttribute("greeting_date", welcomeGreetings.get(i).getDate());
 								
 %>
-<!-- test 1-->
-				<div class=llama >
-					
-					<p class= nickname>
-						<b>${fn:escapeXml(greeting_user.nickname)}</b> wrote:				
-					</p>
-					
-					<p class= date>
-						<em>${fn:escapeXml(greeting_date)}</em>
-					</p>
-					
-					<p class=title>
-						<strong>${fn:escapeXml(greeting_title)}</strong>
-					</p>
-					
-					<p class=content >
-						<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
-					</p>
-					<br><br>
+					<!-- test 1-->
+					<div class=llama>
 
-					
-				</div>
-<%					
+						<p class=nickname>
+							<b>${fn:escapeXml(greeting_user.nickname)}</b> wrote:
+						</p>
+
+						<p class=date>
+							<em>${fn:escapeXml(greeting_date)}</em>
+						</p>
+
+						<p class=title>
+							<strong>${fn:escapeXml(greeting_title)}</strong>
+						</p>
+
+						<p class=content>
+						<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
+						</p>
+						<br>
+						<br>
+
+
+					</div>
+					<%					
 		}	
-%>		
+%>
 				</div>
 				<% if (!greetings.isEmpty()) { 
 				%>
 				<div class="col-md-12">
-					
+
 					<!--This "form" creates the "See All Blogs Button" -->
 					<form action="/seeAll" method="post">
 						<div>
-							<center><input class= "btn btn-info" type="submit" value="See All Blogs" /></center>
+							<center>
+								<input class="btn btn-info" type="submit" value="See All Blogs" />
+							</center>
 						</div>
 					</form>
 
-				</div>	
+				</div>
+				<br>
+				<br>
 				<%} %>
-				
+
 			</div>
 		</div>
 	</div>
-	
-	
-	
-	    <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div id="authors">
-                            <p><b>Authors:</b> Tarang Khandpur and Karime Saad</p>
-                        </div>
-                    </div>
-                </div>       
-            </div>
-        </footer>
-	
+
+
+
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<div id="authors">
+						<p>
+							<b>Authors:</b> Tarang Khandpur and Karime Saad | EE 461L |
+							February, 2017
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
 </body>
 </html>

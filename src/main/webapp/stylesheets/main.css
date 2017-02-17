@@ -63,10 +63,10 @@ blockquote {
 }
 
 
-.user-signin h2:after {
+.title-line:after {
     content: "";
     position: absolute;
-    bottom: -20px;
+    bottom: 0px;
     left: 50%;
     width: 60px;
     height: 1px;
@@ -93,13 +93,23 @@ blockquote {
 
 .llama{
 
+	padding-top: 20px;
 	overflow-y: scroll;
     overflow-x: hidden;
    	word-wrap: break-word;
 	
 }
 
+/*===== buttons ==== */
 
+#button-addpost , #button-subscribe , #button-unsubscribe {
+display:inline-block;
+
+}
+
+.buttons {
+	display:inline-block;
+}
 
 /*===== footer =====*/
 .footer {

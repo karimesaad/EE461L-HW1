@@ -34,12 +34,12 @@
 	
 	</head>
 	
-	<header class="header" id="HOME">
+	<header class="header" >
 	
 	  	<div class="header-overlay">
 			<div class="container header-containeru8">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-6 col-md-offset-2">
 						<div class="header-text">
 							<h1><strong> Create your Blog Entry! </strong></h1>
 							<h2> Write something on here that nobody will ever see. </h2>
@@ -56,21 +56,25 @@
 		<div class= submit-post>
 			<div class=container>
 				<div class=row>
-					<div class="col-md-5 col-md-offset-4">
+					<div class="col-md-5 col-md-offset-3">
 					
-						<form action="/ofysign" method="post">
+						<form action="/ofysign"  method="post">
 							<div>
 								<br><br>
 								<p> Title:   <textarea name="title" rows="2" cols="60"></textarea> </p>
+								<br>
 								<p> Content: <textarea name="content" rows="3" cols="60"></textarea> </p>
+								<br>
 							</div>
-							<div>
-								<center><input type="submit" class="btn btn-info" value="Post Greeting" /></center>
+							<div align="center">
+								<input type="submit" class="btn btn-info" value="Post Greeting" />
 							</div>
 	
 						</form>
-						<br>
-						<center><a href="/welcome1.jsp" class="btn btn-info" role="button">Cancel</a></center>
+						
+						<div align="center">
+						<a href="/welcome1.jsp" class="btn btn-info" role="button">Cancel</a>
+						</div>
 						<br><br><br>
 					</div>
 				</div>
@@ -82,7 +86,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div id="authors">
-                            <p><b>Authors:</b> Tarang Khandpur and Karime Saad</p>
+                            <p><b>Authors:</b> Tarang Khandpur and Karime Saad   |   EE 461L   |   February, 2017</p>
                         </div>
                     </div>
                 </div>       
