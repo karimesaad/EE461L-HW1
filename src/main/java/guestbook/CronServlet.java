@@ -459,7 +459,7 @@ public class CronServlet extends HttpServlet {
 public class CronServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
-		Sendgrid mail = new Sendgrid("TKnologic104","khandpur104");
+		Sendgrid mail = new Sendgrid("TKnologic","khandpur104");
 		
 		
 		ObjectifyService.register(Subscriber.class);
@@ -481,17 +481,18 @@ public class CronServlet extends HttpServlet {
 		
 		// send your message.
 		String str = new String();
-		Date yesterday = new Date();
-		yesterday.setHours(-24);
-
+		//Date yesterday = new Date();
+		//yesterday.setHours(-24);
+		Date yesterday = new Date(System.currentTimeMillis() - (24*60*1000));
+		
 		for (Greeting a : greetings) {
-			//if (a.getDate().after(yesterday)) {
-				str = str + a.getTitle() + "\n" + a.getDate().toString() + "\n" + a.getContent() + "\n" + "by: "
-				+ a.getUser() + "\n"
-				+ "______________________________________________________________________________________"
-				+ "\n";
+			if (a.getDate().after(yesterday)) {
+				str = str + "Title: " + a.getTitle() + "\r\n" + a.getDate().toString() + "\r\n" + a.getContent() + "\r\n" + "by: "
+				+ a.getUser() + "\r\n"
+				+ "--"
+				+ "\r\n";
 			}
-		//}
+		}
 		
 		
 			
@@ -502,7 +503,7 @@ public class CronServlet extends HttpServlet {
 		
 		
 	for (Subscriber b : subscribers) {
-		mail.setTo(b.getUser().getEmail()).setFrom("tarang.khandpur@utexas.edu").setSubject("461L_HW1_Cron: Here's what has happened on the Blog Yesterday Since 5:00pm").setText(str).setHtml("<p>str</p>");
+		mail.setTo(b.getUser().getEmail()).setFrom("tarang.khandpur@utexas.edu").setSubject("461L_HW1_Cron: Here's what has happened on the Blog Yesterday Since 5:00pm").setText(str);
 		try {
 			mail.send();
 		} catch (JSONException e) {
