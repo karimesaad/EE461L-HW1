@@ -63,7 +63,7 @@ blockquote {
 }
 
 
-.title-line:after {
+.line:after {
     content: "";
     position: absolute;
     bottom: 0px;
@@ -91,6 +91,10 @@ blockquote {
 	padding-bottom: 6px;
 }
 
+.blog-responses, .see-all-posts{
+	padding-bottom: 20px;	
+}
+
 .llama{
 
 	padding-top: 20px;
@@ -103,12 +107,16 @@ blockquote {
 /*===== buttons ==== */
 
 #button-addpost , #button-subscribe , #button-unsubscribe {
-display:inline-block;
-
+display:inline;
+	align: center;
+	text-align:center;
 }
 
 .buttons {
-	display:inline-block;
+	display:inline;
+	align: center;
+	text-align:center;
+	
 }
 
 /*===== footer =====*/

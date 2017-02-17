@@ -64,80 +64,90 @@
 			<div class=row>
 				<div class="col-md-6 col-md-offset-3">
 
-					<% 
-							UserService userService = UserServiceFactory.getUserService();
-							User user = userService.getCurrentUser();
-							if (user != null) {
-								pageContext.setAttribute("user", user);
-						%>
+					<%
+						UserService userService = UserServiceFactory.getUserService();
+						User user = userService.getCurrentUser();
+						if (user != null) {
+							pageContext.setAttribute("user", user);
+					%>
 					<h4>
 						<br>
 						<center>
 							Hello,<b> ${fn:escapeXml(user.nickname)}!</b>
-					</center></h4>
-					
-					
-						<h2 class="title-align" align="center">
-							(You can <a
-								href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign
-								out</a>.)
-						</h2>
- 						<br>
-					<div class="buttons" align="center">
-						<form action="/SubscriberServlet" method="post">
-							<a href="/blogpost.jsp" class="btn btn-info" id="button-addpost" role="button">Add
-								Post</a>
+						</center>
+					</h4>
 
-							<%			
-					ObjectifyService.register(Subscriber.class);
-					List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();
-					Collections.sort(subscribers);			
+
+					<h2 class="title-align" align="center">
+						(You can <a
+							href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign
+							out</a>.)
+					</h2>
+					<br>
+					<br>
 					
-					List<String> emails = new ArrayList<String>();
-					for (Subscriber a: subscribers){
-						emails.add(a.getUser().getEmail());
-					}
+					<!--  Create a Post Button -->
 					
-						if (emails.contains(user.getEmail())){
-%>
-							<!--  This form creates the unSubscribe Button -->
+					<div class="col-sm-5"></div>
+					<div class="btn-group" align="center">
+						<center><a href="/blogpost.jsp" class="btn btn-info" id="button-addpost"
+							role="button">Add Post</a></center>
 
-							<br>
-						<!--  	<form action="/SubscriberServlet" method="post">-->
-								<input class="btn btn-info" id="button-subscribe" name="Sub" type="submit"
-									value="Unsubscribe" />
-						<!--  	</form> -->
-							<br>
-							<br>
+						<%
+								ObjectifyService.register(Subscriber.class);
+									List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();
+									Collections.sort(subscribers);
 
-							<%
-						} else {
-%>
+									List<String> emails = new ArrayList<String>();
+									for (Subscriber a : subscribers) {
+										emails.add(a.getUser().getEmail());
+									}
 
-							<br>
-						<!-- 	<form action="/SubscriberServlet" method="post"> -->
-								<input class="btn btn-info" id="button-unsubscribe" name="Sub" type="submit"
-									value="Subscribe" />
-						<!--  	</form> -->
-							<br> <br>
-							<%
-						}
-							} else {
-											
+									if (emails.contains(user.getEmail())) {
+							%>
+							
+						<!--  This form creates the unSubscribe Button -->
+
+						<br>
+						<form class="line" action="/SubscriberServlet" method="post">
+							<center><input class="btn btn-info" id="button-subscribe" name="Sub"
+								type="submit" value="Unsubscribe" /></center>
+						</form>
+						<br> <br>
+
+						<%
+								} else {
 							%>
 
-							<h4 class="title-line" align="center">
-							<br>
-								Hello!<br></h4> <h2><center><a
+						<br>
+						<form class="line" action="/SubscriberServlet" method="post">
+							<center><input class="btn btn-info" id="button-unsubscribe" name="Sub"
+								type="submit" value="Subscribe" /></center>
+						</form>
+						<br> <br>
+					</div>
+					</div>
+						<%
+								}
+								} else {
+							%>
+
+						<h4 class="line" align="center">
+							<br> Hello!<br>
+						</h4>
+						<h2>
+							<center>
+								<a
 									href="<%=userService.createLoginURL(request.getRequestURI())%>">Sign
 									in</a> to include your name with greetings you post.
-							</center></h2>
-							<br> <br>
-							<%
-							}
-						%>
-						
-					</div>
+							</center>
+						</h2>
+						<br> <br>
+						<%
+								}
+							%>
+
+				<!--  	</div>-->
 				</div>
 			</div>
 		</div>
@@ -149,20 +159,19 @@
 				<div class="col-md-6 col-md-offset-3">
 
 					<%
-		ObjectifyService.register(Greeting.class);
-		List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
-		Collections.sort(greetings);
-		List<Greeting> welcomeGreetings = greetings;//.subList(0, 4);
-		//Collections.sort(greetings, new Greeting(user, "content"));
-		Collections.sort(welcomeGreetings);
+						ObjectifyService.register(Greeting.class);
+						List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
+						Collections.sort(greetings);
+						List<Greeting> welcomeGreetings = greetings;//.subList(0, 4);
+						//Collections.sort(greetings, new Greeting(user, "content"));
+						Collections.sort(welcomeGreetings);
 
-		for (int i = 0; i < 4 && i<welcomeGreetings.size(); i++) {
-			pageContext.setAttribute("greeting_content", welcomeGreetings.get(i).getContent());
-			pageContext.setAttribute("greeting_user", welcomeGreetings.get(i).getUser());
-			pageContext.setAttribute("greeting_title", welcomeGreetings.get(i).getTitle());
-			pageContext.setAttribute("greeting_date", welcomeGreetings.get(i).getDate());
-								
-%>
+						for (int i = 0; i < 4 && i < welcomeGreetings.size(); i++) {
+							pageContext.setAttribute("greeting_content", welcomeGreetings.get(i).getContent());
+							pageContext.setAttribute("greeting_user", welcomeGreetings.get(i).getUser());
+							pageContext.setAttribute("greeting_title", welcomeGreetings.get(i).getTitle());
+							pageContext.setAttribute("greeting_date", welcomeGreetings.get(i).getDate());
+					%>
 					<!-- test 1-->
 					<div class=llama>
 
@@ -181,16 +190,16 @@
 						<p class=content>
 						<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
 						</p>
-						<br>
-						<br>
+						<br> <br>
 
 
 					</div>
-					<%					
-		}	
-%>
+					<%
+						}
+					%>
 				</div>
-				<% if (!greetings.isEmpty()) { 
+				<%
+					if (!greetings.isEmpty()) {
 				%>
 				<div class="col-md-12">
 
@@ -204,9 +213,12 @@
 					</form>
 
 				</div>
-				<br>
-				<br>
-				<%} %>
+				<br> <br> <br> <br> <br>
+
+
+				<%
+					}
+				%>
 
 			</div>
 		</div>
@@ -220,8 +232,7 @@
 				<div class="col-md-6">
 					<div id="authors">
 						<p>
-							<b>Authors:</b> Tarang Khandpur and Karime Saad | EE 461L |
-							February, 2017
+							<b>Authors:</b> Tarang Khandpur and Karime Saad | EE 461L | February, 2017
 						</p>
 					</div>
 				</div>
