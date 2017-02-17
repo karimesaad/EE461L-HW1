@@ -1,5 +1,7 @@
 cron:
-- description: daily summary job
+- description: Every day at 5pm Central Time,
+                your app should send (via email) a digest of any new posts in the last 24 hours to all
+                subscribed users. If there are no new posts, no email should be sent.
   url: /cron
-  schedule: every 2 minutes
+  schedule: every day 17:00
   timezone: America/Chicago
