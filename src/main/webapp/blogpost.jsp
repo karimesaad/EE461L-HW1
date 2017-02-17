@@ -56,24 +56,39 @@
 		<div class= submit-post>
 			<div class=container>
 				<div class=row>
-					<div class=col-md-5 col-md-offset-1>
+					<div class="col-md-5 col-md-offset-4">
 					
 						<form action="/ofysign" method="post">
 							<div>
-								<p></p>
+								<br><br>
 								<p> Title:   <textarea name="title" rows="2" cols="60"></textarea> </p>
 								<p> Content: <textarea name="content" rows="3" cols="60"></textarea> </p>
 							</div>
 							<div>
-								<input type="submit" value="Post Greeting" />
+								<center><input type="submit" class="btn btn-info" value="Post Greeting" /></center>
 							</div>
 	
 						</form>
+						<br>
+						<center><a href="/welcome1.jsp" class="btn btn-info" role="button">Cancel</a></center>
 						<br><br><br>
-						<h2>If you would like to cancel and go back to the home page, click <a href="/welcome1.jsp">here!</a></h2>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+			    <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="authors">
+                            <p><b>Authors:</b> Tarang Khandpur and Karime Saad</p>
+                        </div>
+                    </div>
+                </div>       
+            </div>
+        </footer>
+		
+		
 </body>
 </html>
