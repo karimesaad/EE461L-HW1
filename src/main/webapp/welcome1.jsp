@@ -43,7 +43,7 @@
 	<div class="header-overlay">
 		<div class="container header-containeru8">
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-6 col-md-offset-2">
 					<div class="header-text">
 						<h1>
 							<b> Welcome to Our Blog! </b>
@@ -62,7 +62,7 @@
 	<div class=usersignin>
 		<div class=container>
 			<div class=row>
-				<div class="col-md-9">
+				<div class="col-md-6 col-md-offset-3">
 
 					<% 
 							UserService userService = UserServiceFactory.getUserService();
@@ -70,15 +70,16 @@
 							if (user != null) {
 								pageContext.setAttribute("user", user);
 						%>
-					<h4><br>
-						Hello,<b> ${fn:escapeXml(user.nickname)}!</b> (You can <a
+					<h4><br><center>
+						Hello,<b> ${fn:escapeXml(user.nickname)}!</b></h4></center><center><h2>(You can <a
 							href="<%=userService.createLogoutURL(request.getRequestURI())%>">sign
-							out</a>.) <br>
-					</h4>
-					<h3>
-						If you would like to add a post, click <a href="/blogpost.jsp">HERE!</a>
-					</h3>
+							out</a>.) <br></center>
+					</h2> 
 
+					<div class="btn-group" role="group" aria-label="Basic example">
+					<form action="/SubscriberServlet" method="post">
+						<a href="/blogpost.jsp" class="btn btn-info" role="button">Add Post</a>
+					
 <%			
 					ObjectifyService.register(Subscriber.class);
 					List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();
@@ -89,17 +90,16 @@
 						emails.add(a.getUser().getEmail());
 					}
 					
-					
 						if (emails.contains(user.getEmail())){
 %>							
 							<!--  This form creates the unSubscribe Button -->
 			<!--  	<div class="col-md-4 col-md-offset-5"> -->
 			<br>
-					<form action="/SubscriberServlet" method="post">
+						<form action="/SubscriberServlet" method="post">
 						<!--  <div>-->
-							<input class = subscribe-button name="Sub" type="submit" value="Unsubscribe" />
+							<input class = "btn btn-info" name="Sub" type="submit" value="Unsubscribe" />
 						<!--  </div>-->
-					</form>
+					  	</form>
 					<br><br>
 			<!-- 	</div> -->
 
@@ -110,16 +110,16 @@
 
 			<!--	<div class="col-md-4 col-md-offset-5">-->
 			<br>
-					<form action="/SubscriberServlet" method="post">
+			  		<form action="/SubscriberServlet" method="post">
 						<!--  <div>-->
-								<input class = subscribe-button name="Sub" type="submit" value="Subscribe" />
+								<input class = "btn btn-info" name="Sub" type="submit" value="Subscribe" />
 						<!--  </div>-->
-					</form>
+			 	</form> 
 					<br>
 					<br>
 			<!--	</div> -->
 
-
+						</form>
 
 					<%
 						}
@@ -139,6 +139,7 @@
 							}
 						%>
 
+					</div>
 				</div>
 			</div>
 		</div>
@@ -147,7 +148,7 @@
 	<div class=blog-responses>
 		<div class=container>
 			<div class=row>
-				<div class=col-md-7 col-md-offset-1>
+				<div class="col-md-6 col-md-offset-3">
 
 <%
 		ObjectifyService.register(Greeting.class);
@@ -179,7 +180,7 @@
 						<strong>${fn:escapeXml(greeting_title)}</strong>
 					</p>
 					
-					<p class=content>
+					<p class=content >
 						<blockquote>${fn:escapeXml(greeting_content)}</blockquote>
 					</p>
 					<br><br>
@@ -192,12 +193,12 @@
 				</div>
 				<% if (!greetings.isEmpty()) { 
 				%>
-				<div class="col-md-4 col-md-offset-5">
+				<div class="col-md-12">
 					
 					<!--This "form" creates the "See All Blogs Button" -->
 					<form action="/seeAll" method="post">
 						<div>
-							<input class= button type="submit" value="See All Blogs" />
+							<center><input class= "btn btn-info" type="submit" value="See All Blogs" /></center>
 						</div>
 					</form>
 
@@ -207,6 +208,20 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+	    <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div id="authors">
+                            <p><b>Authors:</b> Tarang Khandpur and Karime Saad</p>
+                        </div>
+                    </div>
+                </div>       
+            </div>
+        </footer>
 	
 </body>
 </html>
