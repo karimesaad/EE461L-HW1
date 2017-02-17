@@ -14,7 +14,6 @@
 <servlet-name>CronServlet</servlet-name>
 <url-pattern>/cron</url-pattern>
 </servlet-mapping>
-<!--                   TK                -->
 
 
 
@@ -27,7 +26,7 @@
 	<servlet-name>seeAll</servlet-name>
 	<url-pattern>/seeAll</url-pattern>
 </servlet-mapping>
-<!--  **********************TK******************** -->
+
 
 <!--  This servlet is for the "Subscriber List"    -->
 <servlet> 
