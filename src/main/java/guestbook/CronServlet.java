@@ -460,17 +460,56 @@ public class CronServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		
 		Sendgrid mail = new Sendgrid("TKnologic104","khandpur104");
+		
+		
+		ObjectifyService.register(Subscriber.class);
+		ObjectifyService.register(Greeting.class);
+		
+		
+		ObjectifyService.register(Subscriber.class);
+		List<Subscriber> subscribers = ObjectifyService.ofy().load().type(Subscriber.class).list();
+		Collections.sort(subscribers);
+
+		ObjectifyService.register(Greeting.class);
+		List<Greeting> greetings = ObjectifyService.ofy().load().type(Greeting.class).list();
+		Collections.sort(greetings);
+		
+		
 		// set credentials
 
 		// set email data
-		//mail.setTo("karimesm94@gmail.com").setFrom("tarang.khandpur@gmail.com").setSubject("Subject goes here").setText("Hello World!").setHtml("<strong>Hello World!</strong>");
-
+		
 		// send your message.
+		String str = new String();
+		Date yesterday = new Date();
+		yesterday.setHours(-24);
+
+		for (Greeting a : greetings) {
+			//if (a.getDate().after(yesterday)) {
+				str = str + a.getTitle() + "\n" + a.getDate().toString() + "\n" + a.getContent() + "\n" + "by: "
+				+ a.getUser() + "\n"
+				+ "______________________________________________________________________________________"
+				+ "\n";
+			}
+		//}
+		
+		
+			
+		
+		
+		//mail.setTo("karimesm94@gmail.com").setFrom("tarang.khandpur@gmail.com").setSubject("Subject goes here").setText("Hello World!").setHtml("<strong>Hello World!</strong>");
+		//mail.setTo("karimesm94@gmail.com").setFrom("tarang.khandpur@gmail.com").setSubject("461L_HW1_Cron: Here's what has happened on the Blog Yesterday Since 5:00pm").setText(str).setHtml("<p>str</p>");
+		
+		
+	for (Subscriber b : subscribers) {
+		mail.setTo(b.getUser().getEmail()).setFrom("tarang.khandpur@utexas.edu").setSubject("461L_HW1_Cron: Here's what has happened on the Blog Yesterday Since 5:00pm").setText(str).setHtml("<p>str</p>");
 		try {
 			mail.send();
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
+}
 }
