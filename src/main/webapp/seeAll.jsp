@@ -17,6 +17,7 @@
 <%@ page import="com.googlecode.objectify.ObjectifyService"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ page import="guestbook.Greeting"%>
+<%@ page import="java.util.Calendar" %>
 
 <html>
 

@@ -506,7 +506,7 @@ public class CronServlet extends HttpServlet {
 		}
 		
 		for (Greeting email : cronGreetings){
-			str += "Title:         " + email.getTitle() + "\n\n" + "Date:          " + email.getDate().getTime().toString() + "\n\n" + "Content:       " + email.getContent() + "\n\n" + "by:            "
+			str += "Title:         " + email.getTitle() + "\n\n" + "Date:          " + email.getDate().toString() + "\n\n" + "Content:       " + email.getContent() + "\n\n" + "by:            "
 					+ email.getUser() + "-----" + "\n\n\n";
 		}
 		

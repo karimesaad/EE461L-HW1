@@ -171,7 +171,7 @@
 							pageContext.setAttribute("greeting_content", welcomeGreetings.get(i).getContent());
 							pageContext.setAttribute("greeting_user", welcomeGreetings.get(i).getUser());
 							pageContext.setAttribute("greeting_title", welcomeGreetings.get(i).getTitle());
-							pageContext.setAttribute("greeting_date", welcomeGreetings.get(i).getDate().getTime().toString());
+							pageContext.setAttribute("greeting_date", welcomeGreetings.get(i).getDate());
 					%>
 					<!-- test 1-->
 					<div class=llama>

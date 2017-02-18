@@ -6,6 +6,8 @@ import com.google.appengine.api.users.User;
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
 
+import java.util.Calendar;
+
 @Entity
 public class Subscriber implements Comparable<Subscriber> {
 	@Id
