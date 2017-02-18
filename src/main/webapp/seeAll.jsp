@@ -110,7 +110,8 @@
 					<center>
 						<div class="buttons">
 							<a href="#HOME" id="scroll-to-top" class="btn btn-info"
-								id="button-scroll"> Scroll UP </a> <a href="/welcome1.jsp"
+								id="button-scroll"> Scroll UP </a>
+							 <a href="/welcome1.jsp"
 								class="btn btn-info" id="button-homepage" role="button">Go
 								to homepage</a>
 						</div>

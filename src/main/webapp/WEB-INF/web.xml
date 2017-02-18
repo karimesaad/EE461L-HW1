@@ -39,7 +39,16 @@
   </servlet-mapping>
 
 
-<!--  -->
+<!-- This servlet if for Jokes -->
+<servlet> 
+	<servlet-name>jokes</servlet-name>
+	<jsp-file>/funnyJokes.jsp</jsp-file>
+  </servlet>
+  <servlet-mapping>
+	<servlet-name>jokes</servlet-name>
+	<url-pattern>/jokes</url-pattern>
+  </servlet-mapping>
+<!--   ***************       -->  
   
   <servlet> 
 	<servlet-name>ofysign</servlet-name>

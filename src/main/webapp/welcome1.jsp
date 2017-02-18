@@ -212,6 +212,23 @@
 							</center>
 						</div>
 					</form>
+					
+					<br>
+					
+					<!-- This "form" creates the "jokes" Button -->
+					<form action="/jokes" method="post">
+						<div>
+							<center>
+								<input class="btn btn-info" type="submit" value="Jokes" />
+							</center>
+						</div>
+					</form>
+					
+					<!-- 
+							 <a href="/funnyJokes.jsp"
+								class="btn btn-info" role="button">Jokes </a>
+					-->
+
 
 				</div>
 				<br> <br> <br> <br> <br>
